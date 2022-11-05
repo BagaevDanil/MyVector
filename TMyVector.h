@@ -24,6 +24,7 @@ public:
     int GetSize();
     int GetReservSize();
     void PushBack(T value);
+    void Insert(int pos, T value);
     void Reserv(int newSize);
     int GetValue(int ind);
 };
@@ -69,4 +70,18 @@ int TMyVector<T>::GetValue(int ind) {
         // Error
     }
     return ReservArr_[ind];
+}
+
+template <class T>
+void TMyVector<T>::Insert(int pos, T value) {
+    if (pos > CurrentSize_) {
+        // Error
+    }
+    if (ReservSize_ <= CurrentSize_) {
+        Reserv(ReservSize_ * MagFactor_);
+    }
+    for (int i = pos; i < CurrentSize_; i++) {
+        ReservArr_[i + 1] = ReservArr_[i];
+    }
+    ReservArr_[pos] = value;
 }
