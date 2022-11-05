@@ -12,7 +12,7 @@ public:
     TMyVector(int size) {
         ReservSize_ = size;
         CurrentSize_ = 0;
-        ReservArr_ = new T(ReservSize_);
+        ReservArr_ = new T[ReservSize_];
     }
 
     TMyVector() : TMyVector(0) {}
@@ -30,6 +30,8 @@ public:
 };
 
 // Realization
+#include <iostream>
+
 template <class T>
 int TMyVector<T>::GetSize() {
     return CurrentSize_;
@@ -53,15 +55,15 @@ void TMyVector<T>::Reserv(int newSize) {
     if (newSize < CurrentSize_) {
         // Erorr
     }
-    T* newReservArr = new T(newSize);
+    T* newReservArr = new T[newSize];
 
     for (int i = 0; i < CurrentSize_; i++) {
         newReservArr[i] = ReservArr_[i];
     }
 
     delete[] ReservArr_;
+    ReservSize_ = newSize;
     ReservArr_ = newReservArr;
-    
 }
 
 template <class T>
@@ -80,8 +82,9 @@ void TMyVector<T>::Insert(int pos, T value) {
     if (ReservSize_ <= CurrentSize_) {
         Reserv(ReservSize_ * MagFactor_);
     }
-    for (int i = pos; i < CurrentSize_; i++) {
-        ReservArr_[i + 1] = ReservArr_[i];
+    for (int i = CurrentSize_; i > pos; i--) {
+        ReservArr_[i] = ReservArr_[i - 1];
     }
+    CurrentSize_++;
     ReservArr_[pos] = value;
 }
