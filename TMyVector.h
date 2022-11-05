@@ -24,14 +24,13 @@ public:
     int GetSize();
     int GetReservSize();
     void PushBack(T value);
+    void PushForward(T value);
     void Insert(int pos, T value);
     void Reserv(int newSize);
     int GetValue(int ind);
 };
 
 // Realization
-#include <iostream>
-
 template <class T>
 int TMyVector<T>::GetSize() {
     return CurrentSize_;
@@ -44,10 +43,12 @@ int TMyVector<T>::GetReservSize() {
 
 template <class T>
 void TMyVector<T>::PushBack(T value) {
-    if (ReservSize_ <= CurrentSize_) {
-        Reserv(ReservSize_ * MagFactor_);
-    }
-    ReservArr_[CurrentSize_++] = value;
+    Insert(CurrentSize_, value)
+}
+
+template <class T>
+void TMyVector<T>::PushForward(T value) {
+    Insert(0, value)
 }
 
 template <class T>
@@ -76,7 +77,7 @@ int TMyVector<T>::GetValue(int ind) {
 
 template <class T>
 void TMyVector<T>::Insert(int pos, T value) {
-    if (pos > CurrentSize_) {
+    if (pos > CurrentSize_ || pos < 0) {
         // Error
     }
     if (ReservSize_ <= CurrentSize_) {
