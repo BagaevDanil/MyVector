@@ -23,11 +23,11 @@ public:
 public:
     int GetSize();
     int GetReservSize();
+    int GetValue(int ind);
+    void Reserv(int newSize);
+    void Insert(int pos, T value);
     void PushBack(T value);
     void PushFront(T value);
-    void Insert(int pos, T value);
-    void Reserv(int newSize);
-    int GetValue(int ind);
     void Delete(int pos);
     void PopBack();
     void PopFront();
