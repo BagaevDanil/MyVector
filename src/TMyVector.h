@@ -30,6 +30,7 @@ public:
     int GetValue(int ind);
     void Delete(int pos);
     void PopBack();
+    void PopFront();
 };
 
 // Realization
@@ -109,4 +110,9 @@ void TMyVector<T>::Delete(int pos) {
 template <class T>
 void TMyVector<T>::PopBack() {
     Delete(CurrentSize_ - 1);
+}
+
+template <class T>
+void TMyVector<T>::PopFront() {
+    Delete(0);
 }

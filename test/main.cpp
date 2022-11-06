@@ -83,6 +83,28 @@ TEST(TMyVector, PopBack) {
     EXPECT_EQ(vec.GetValue(4), 4);
 }
 
+TEST(TMyVector, PopFront) {
+    TMyVector<int> vec(15);
+    EXPECT_EQ(vec.GetSize(), 0);
+    EXPECT_EQ(vec.GetReservSize(), 15);
+
+    for (int i = 0; i < 10; i++) {
+        vec.PushBack(i);
+    } // 0 1 2 3 4 5 6 7 8 9 # # # # #
+
+    vec.PopFront(); // 1 2 3 4 5 6 7 8 9
+    vec.PopFront(); // 2 3 4 5 6 7 8 9
+    vec.PopFront(); // 3 4 5 6 7 8 9
+    vec.PopFront(); // 4 5 6 7 8 9
+    vec.PopFront(); // 5 6 7 8 9
+
+    EXPECT_EQ(vec.GetValue(0), 5);
+    EXPECT_EQ(vec.GetValue(1), 6);
+    EXPECT_EQ(vec.GetValue(2), 7);
+    EXPECT_EQ(vec.GetValue(3), 8);
+    EXPECT_EQ(vec.GetValue(4), 9);
+}
+
 int main()
 {
     testing::InitGoogleTest();
