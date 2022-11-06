@@ -43,12 +43,12 @@ int TMyVector<T>::GetReservSize() {
 
 template <class T>
 void TMyVector<T>::PushBack(T value) {
-    Insert(CurrentSize_, value)
+    Insert(CurrentSize_, value);
 }
 
 template <class T>
 void TMyVector<T>::PushForward(T value) {
-    Insert(0, value)
+    Insert(0, value);
 }
 
 template <class T>
