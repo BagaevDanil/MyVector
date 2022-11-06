@@ -29,6 +29,7 @@ public:
     void Reserv(int newSize);
     int GetValue(int ind);
     void Delete(int pos);
+    void PopBack();
 };
 
 // Realization
@@ -103,4 +104,9 @@ void TMyVector<T>::Delete(int pos) {
     if (ReservSize_ > CurrentSize_ * MagFactor_) {
         Reserv(CurrentSize_ * MagFactor_);
     }
+}
+
+template <class T>
+void TMyVector<T>::PopBack() {
+    Delete(CurrentSize_ - 1);
 }
