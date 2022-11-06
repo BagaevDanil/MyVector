@@ -4,8 +4,6 @@
 int main()
 {
     TMyVector<int> arr(10);
-
-    int a;
  
     std::cout << "size: " << arr.GetSize() << std::endl;
     std::cout << "Rev size: " << arr.GetReservSize() << std::endl;
