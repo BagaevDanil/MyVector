@@ -24,7 +24,7 @@ public:
     int GetSize();
     int GetReservSize();
     void PushBack(T value);
-    void PushForward(T value);
+    void PushFront(T value);
     void Insert(int pos, T value);
     void Reserv(int newSize);
     int GetValue(int ind);
@@ -48,7 +48,7 @@ void TMyVector<T>::PushBack(T value) {
 }
 
 template <class T>
-void TMyVector<T>::PushForward(T value) {
+void TMyVector<T>::PushFront(T value) {
     Insert(0, value);
 }
 
