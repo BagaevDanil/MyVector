@@ -27,6 +27,17 @@ TEST(TMyVector, Insert) {
     EXPECT_EQ(vec.GetValue(3), 43);
 }
 
+TEST(TMyVector, Reserv) {
+    TMyVector<int> vec(15);
+    EXPECT_EQ(vec.GetSize(), 0);
+    EXPECT_EQ(vec.GetReservSize(), 15);
+
+    vec.Reserv(101);
+
+    EXPECT_EQ(vec.GetSize(), 0);
+    EXPECT_EQ(vec.GetReservSize(), 101);
+}
+
 int main()
 {
     testing::InitGoogleTest();
